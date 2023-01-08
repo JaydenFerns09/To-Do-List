@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>To Do List</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div class="box" id="heading">
+    <h1><%= typeOfDay %></h1>
+  </div>
+  <div class="box">
+
+    <% newItem.forEach(function(item){ %>
+      <form action="/delete" method="post">
+        <div class="item">
+          <input type="checkbox" name="checkbox" value="<%= item._id %>" onchange="this.form.submit()">
+          <p><%= item.name %></p>
+        </div>
+        <input type="hidden" name="listName" value="<%= typeOfDay %>">
+      </form>
+      <% }) %>
+
+    <form class="item" action="/" method="post">
+      <input type="text" name="newInput" placeholder="New Input" autocomplete="off">
+      <button type="submit" name="button" value="<%= typeOfDay %>">+</button>
+    </form>
+  </div>
+
+
+</body>
+
+</html>
